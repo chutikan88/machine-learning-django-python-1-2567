@@ -1,0 +1,61 @@
+{% extends 'iris/main.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <center>
+      <h1>How to Create CRUD Operation</h1>
+      <h2>Django Web Framework</h2>
+      <hr />
+      <h5>
+        <a href="{% url 'stinsert' %}">บันทึกฐานข้อมูลบุคลากร</a>
+        <table border="1">
+          <tr>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>gender</th>
+            <th>position</th>
+            <th>salary</th>
+            <th>address</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>birthday</th>
+            <th>religion</th>
+            <th>addition_note</th>
+          </tr>
+          {% for displayst in Employee %}
+          <tr>
+            <td>{{ displayst.firstname }}</td>
+            <td>{{ displayst.lastname }}</td>
+            <td>{{ displayst.gender }}</td>
+            <td>{{ displayst.position }}</td>
+            <td>{{ displayst.salary }}</td>
+            <td>{{ displayst.address }}</td>
+            <td>{{ displayst.email }}</td>
+            <td>{{ displayst.phone }}</td>
+            <td>{{ displayst.birthday|date:'j F Y' }}</td>
+            <td>{{ displayst.religion }}</td>
+            <td>{{ displayst.addition_note }}</td>
+            <td><a href="/edit/{{ displayst.id }}">edit</a></td>
+            <td>
+              <a
+                href="/delete/{{ displayst.id }}"
+                onclick="return confirm('Ary you sure you want to DELETE ?')"
+                >delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </h5>
+    </center>
+  </body>
+</html>
+{% endblock %}

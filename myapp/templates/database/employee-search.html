@@ -1,0 +1,70 @@
+{% extends 'heart/main.html' %} {% block content %}
+<br />
+<div>
+  <h3>การแก้ไขฐานข้อมูลบุคลากร</h3>
+</div>
+<br />
+<form>
+  {{ form.name.label }} {{ form.name}}
+  <button>ค้นหา</button>
+</form>
+<br />
+<table class="table table-striped table-bordered table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th>ชื่อ-นามสกุล</th>
+      <th>ตำแหน่ง</th>
+      <th>เงินเดือน</th>
+      <th>ที่อยู่</th>
+      <th>โทรศัพท์</th>
+      <th>อีเมล</th>
+      <th>วันเกิด</th>
+      <th>แก้ไข | ลบ</th>
+    </tr>
+  </thead>
+  {% for r in data %}
+  <tr>
+    <td>{{ r.firstname }} {{ r.lastname }}</td>
+    <td>{{ r.position }}</td>
+    <td>{{ r.salary }}</td>
+    <td>{{ r.address }}</td>
+    <td>{{ r.phone }}</td>
+    <td>{{ r.email }}</td>
+    <td>{{ r.birthday|date:'j F Y' }}</td>
+    <td>
+      <a href="{% url 'emp_update' id=r.id %}">แก้ไข</a> |
+      <a href="javascript:del('{% url 'emp_delete' id=r.id %}')">ลบ</a>
+      <script>
+        function del(url) {
+          if (confirm('ยืนยันการลบ')) {
+            document.location = url;
+          }
+        }
+      </script>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %} <div>
+  <ul class="mt-4 pagination justify-content-center">
+    {% for n in page.paginator.page_range %} {% if n != page.number %}
+    <li class="page-item">
+      <a class="page-link" href="{% url 'employee_search' pg=n %}">{{ n }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link active">{{ n }}</a>
+    </li>
+    {% endif %} {% endfor %}
+  </ul>
+</div> {% endcomment %}

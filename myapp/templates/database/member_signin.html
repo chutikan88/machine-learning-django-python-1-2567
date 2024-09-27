@@ -1,0 +1,12 @@
+{% extends 'heart/main.html' %} {% load crispy_forms_tags %} {% block content %}
+<div>
+  <br /><br />
+  <form method="post" class="mt-4 mx-auto" style="width: 400px">
+    {% csrf_token %}
+    <h5>{{ form|crispy }}</h5>
+    <p class="mt-4 text-center">
+      <button class="btn btn-primary">OK</button>
+    </p>
+  </form>
+</div>
+{% endblock %}

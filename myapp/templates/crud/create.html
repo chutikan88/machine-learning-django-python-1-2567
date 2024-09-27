@@ -1,0 +1,114 @@
+{% extends 'iris/main.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <center>
+      <h3>Add New Student Record</h3>
+      <hr />
+      <h4>
+        <form method="POST">
+          {% csrf_token %}
+          <table border="1">
+            <tr>
+              <td>Firstname</td>
+              <td>
+                <input type="text" placeholder="firstname" name="firstname" />
+              </td>
+            </tr>
+            <tr>
+              <td>Lastname</td>
+              <td>
+                <input type="text" placeholder="lastname" name="lastname" />
+              </td>
+            </tr>
+            <tr>
+              <td>gender</td>
+              <td>
+                <input
+                  type="radio"
+                  value="M"
+                  name="gender"
+                  group="gender"
+                />Male
+                <input
+                  type="radio"
+                  value="F"
+                  name="gender"
+                  group="gender"
+                />Female
+              </td>
+            </tr>
+            <tr>
+              <td>position</td>
+              <td>
+                <input type="text" placeholder="position" name="position" />
+              </td>
+            </tr>
+            <tr>
+              <td>salary</td>
+              <td>
+                <input type="text" placeholder="salary" name="salary" />
+              </td>
+            </tr>
+            <tr>
+              <td>address</td>
+              <td>
+                <input type="text" placeholder="address" name="address" />
+              </td>
+            </tr>
+            <tr>
+              <td>email</td>
+              <td>
+                <input type="text" placeholder="email" name="email" />
+              </td>
+            </tr>
+            <tr>
+              <td>phone</td>
+              <td>
+                <input type="text" placeholder="phone" name="phone" />
+              </td>
+            </tr>
+            <tr>
+              <td>birthday</td>
+              <td>
+                <input type="text" placeholder="birthday" name="birthday" />
+              </td>
+            </tr>
+            <tr>
+              <td>religion</td>
+              <td>
+                <input type="text" placeholder="religion" name="religion" />
+              </td>
+            </tr>
+            <tr>
+              <td>addition_note</td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="addition_note"
+                  name="addition_note"
+                />
+              </td>
+            </tr>
+          </table>
+          <br />
+          <input type="submit" value="Insert Record" /> |
+          <a href="{% url 'stdisplay' %}">Home Page</a>
+          <hr />
+          {% if messages %} {% for result in messages %}
+          <b style="color: green">{{result}}</b>
+          {% endfor %} {% endif %}
+        </form>
+      </h4>
+    </center>
+  </body>
+</html>
+{% endblock %}

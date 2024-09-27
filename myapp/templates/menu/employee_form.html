@@ -1,0 +1,20 @@
+{% exten 'main.html' %} 
+
+{% load crispy_forms_tags %} 
+
+{% block content %} 
+
+{% if not form.is_valid %}
+<form method="post" class="m-auto" style="width: 400px">
+  {% csrf_token %} {{ form|crispy }}
+  <p class="mt-4 text-center">
+    <button class="btn btn-primary">ส่งข้อมูล</button>
+  </p>
+</form>
+{% else %}
+<h3>ข้อมูลบันทึกแล้ว</h3>
+<br />
+<a href="{% url 'emp_form' %}">ข้อมูลใหม่</a>
+{% endif %} 
+
+{% endblock %}

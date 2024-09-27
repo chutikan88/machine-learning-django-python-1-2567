@@ -1,0 +1,31 @@
+{% extends 'heart/main.html' %} 
+{% block content %} 
+{% if not form.is_valid %}
+
+<form method="post">
+  {% csrf_token %}
+  <br /><br />
+  <div class="container-sm">
+    <h5>
+      <center>
+        <table cellpadding="5">
+          {{ form.as_table }}
+          <caption align="bottom">
+            <br />
+            <button>ส่งข้อมูล</button>
+          </caption>
+        </table>
+      </center>
+    </h5>
+  </div>
+</form>
+{% else %}
+<div class="text-center">
+  <br /><br />
+  <h4>
+    ข้อมูลบันทึกแล้ว
+    <br /><br />
+    <a href="{% url 'employee_create' %}">คลิกเพิ่มข้อมูลใหม่</a>
+  </h4>
+</div>
+{% endif %} {% endblock %}

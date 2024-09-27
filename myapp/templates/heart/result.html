@@ -1,0 +1,27 @@
+{% extends 'heart/main.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iris Predicton</title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  {% block content %}
+  <div class="container-sm">
+    <br /><br />
+    <h1>พยากรณ์ว่าเป็นโรคหัวใจ: {{result}}</h1>
+    <br />
+    <h2>0 เป็นปกติไม่เป็นโรคหัวใจ</h2>
+    <h2 class="mb-5">1 เป็นโรคหัวใจ</h2>
+    <a href="{% url 'predictor' %}">
+      <h2>คลิกเพิ่มข้อมูลใหม่</h2>
+    </a><br /><br />
+  </div>
+  {% endblock %}
+</body>
+
+</html>

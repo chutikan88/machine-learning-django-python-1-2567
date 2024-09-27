@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+<title>{% block title %}Home{% endblock title %}</title>
+
+{% block content %}
+<!--page content-->
+<br />
+<div class="container" style="text-align: center">
+  <div>ฐานข้อมูลบุคลากร</div>
+</div>
+
+<div class="container">
+  <br />
+  <table class="table table-bordered" id="example" style="text-align: center">
+    <thead class="table-success">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Occupation</th>
+        <th>Salary</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <!--data from backent-->
+    {% for staff in staffs %}
+    <tr>
+      <td>{{staff.id}}</td>
+      <td>{{staff.name}}</td>
+      <td>{{staff.email}}</td>
+      <td>{{staff.occupation}}</td>
+      <td>{{staff.salary}}</td>
+      <td>{{staff.gender}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<!--END // container-->
+
+<br /><br /><br /><br />
+{% endblock %}

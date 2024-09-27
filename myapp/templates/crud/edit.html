@@ -1,0 +1,119 @@
+{% extends 'iris/main.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit & Update Page</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <center>
+      <h1>Edit & Update Student Record</h1>
+      <h2>The Student Id Is {{Employee.id}}</h2>
+      <hr />
+      <form method="POST" action="/update/{{Employee.id}}">
+        {% csrf_token %}
+        <table border="1">
+          <tr>
+            <td>firstname</td>
+            <td>
+              <input
+                type="text"
+                name="firstname"
+                value="{{Employee.firstname}}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>lastname</td>
+            <td>
+              <input
+                type="text"
+                name="lastname"
+                value="{{Employee.lastname}}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>gender</td>
+            <td>
+              <input type="text" name="gender" value="{{Employee.gender}}" />
+            </td>
+          </tr>
+          <tr>
+            <td>position</td>
+            <td>
+              <input
+                type="text"
+                name="position"
+                value="{{Employee.position}}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>salary</td>
+            <td>
+              <input type="text" name="salary" value="{{Employee.salary}}" />
+            </td>
+          </tr>
+          <tr>
+            <td>address</td>
+            <td>
+              <input type="text" name="address" value="{{Employee.address}}" />
+            </td>
+          </tr>
+          <tr>
+            <td>email</td>
+            <td>
+              <input type="text" name="email" value="{{Employee.email}}" />
+            </td>
+          </tr>
+          <tr>
+            <td>phone</td>
+            <td>
+              <input type="text" name="phone" value="{{Employee.phone}}" />
+            </td>
+          </tr>
+          <tr>
+            <td>birthday</td>
+            <td>
+              <input
+                type="text"
+                name="birthday"
+                value="{{Employee.birthday}}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>religion</td>
+            <td>
+              <input
+                type="text"
+                name="religion"
+                value="{{Employee.religion}}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>addition_note</td>
+            <td>
+              <input
+                type="text"
+                name="addition_note"
+                value="{{Employee.addition_note}}"
+              />
+            </td>
+          </tr>
+        </table>
+        <input type="submit" value="Update Employee Record" />
+        <a href="{% url 'stdisplay' %}">Home Page</a>
+        <hr />
+        {% if messages %} {% for result in messages %} {{result}} {% endfor %}
+        {% endif %}
+      </form>
+    </center>
+  </body>
+</html>
+{% endblock %}

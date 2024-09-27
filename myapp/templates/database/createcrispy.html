@@ -1,0 +1,19 @@
+{% extends 'heart/main.html' %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+{% if not form.is_valid %}
+<form method="post" class="m-auto" style="width: 400px">
+  <br /><br />
+  {% csrf_token %}
+  <h5>{{ form|crispy }}</h5>
+  <p class="mt-4 text-center">
+    <button class="btn btn-primary">ส่งข้อมูล</button>
+  </p>
+</form>
+{% else %}
+<center><br><br>
+<h3>ข้อมูลบันทึกแล้ว</h3>
+<br />
+<a href="{% url 'createcrispy' %}"><h4>เพิ่มข้อมูลใหม่<h4></a>
+</center>
+{% endif %} {% endblock %}
